@@ -8,8 +8,8 @@ public class TestBanking {
         Scanner input = new Scanner(System.in);
         System.out.println("输入初始余额");
         Account account = new Account(input.nextInt());
-        boolean bool = true;
-        while (bool) {
+        boolean onoff = true;
+        while (onoff) {
             System.out.println("----------菜单---------------");
             System.out.println("-------1.查看当前账户余额-------");
             System.out.println("-------2.取钱----------------");
@@ -22,16 +22,24 @@ public class TestBanking {
                     break;
                 case 2:
                     System.out.print("输入取出金额：");
-                    account.withdraw(input.nextDouble());
+                    if(account.withdraw(input.nextDouble())){
+                        System.out.println("true");
+                    }else {
+                        System.out.println("false");
+                    }
                     System.out.println("当前账户余额：" + account.getBalance());
                     break;
                 case 3:
                     System.out.print("输入存入金额：");
-                    account.deposit(input.nextDouble());
+                    if(account.deposit(input.nextDouble())){
+                        System.out.println("true");
+                    }else {
+                        System.out.println("false");
+                    }
                     System.out.println("当前账户余额：" + account.getBalance());
                     break;
                 case 4:
-                    bool = false;
+                    onoff = false;
                     break;
                 default:
                     System.out.println("重新输入");

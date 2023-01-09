@@ -1,7 +1,7 @@
 package banking;
 
 public class Account {
-    private double balance ;
+    protected double balance ;
     public Account(double init_balance) {
         this.balance = init_balance;
     }

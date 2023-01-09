@@ -8,10 +8,25 @@ public class TestBanking {
         Scanner input = new Scanner(System.in);
         Bank bank= new Bank();
         boolean onoff = true;
-        int index =- -1;
+        int index = -1;
         while (onoff) {
             if(index == -1){
                 System.out.println("请先添加账户");
+                System.out.println("0.存款账户");
+                System.out.println("1.信用账户");
+                if(input.nextInt()==0) {
+                    System.out.println("输入账户名（姓氏和名）");
+                    bank.addcustomers(input.next(), input.next());
+                    index = bank.getNumberOfCustomers();
+                    System.out.println("输入账户余额和利息");
+                    bank.getCustomers(index).setAccount(new SavingAccount(input.nextDouble(),input.nextDouble()));
+                }else {
+                    System.out.println("输入账户名（姓氏和名）");
+                    bank.addcustomers(input.next(), input.next());
+                    index = bank.getNumberOfCustomers();
+                    System.out.println("输入账户余额和透支额度");
+                    bank.getCustomers(index).setAccount(new CheckingAccount(input.nextDouble(),input.nextDouble()));
+                }
             }
             System.out.println("----------菜单---------------");
             System.out.println("-------1.查看当前账户余额-------");
@@ -22,7 +37,7 @@ public class TestBanking {
             System.out.println("-------6.输出账户列表----------------");
             System.out.println("-------0.退出----------------");
             System.out.print("请输入功能（1-4）：");
-            Customer customer = bank.getCustomers(index-1);
+            Customer customer = bank.getCustomers(index);
             switch (input.nextInt()) {
                 case 0:
                 onoff = false;
@@ -49,11 +64,21 @@ public class TestBanking {
                     System.out.println("当前账户余额：" + customer.getAccount().getBalance());
                     break;
                 case 4:
-                    System.out.println("输入账户名（姓氏和名）");
-                    bank.addcustomers(input.next(), input.next());
-                    index = bank.getNumberOfCustomers();
-                    System.out.println("输入账户余额");
-                    bank.getCustomers(index-1).setAccount(new Account(input.nextDouble()));
+                    System.out.println("0.存款账户");
+                    System.out.println("1.信用账户");
+                    if(input.nextInt()==0) {
+                        System.out.println("输入账户名（姓氏和名）");
+                        bank.addcustomers(input.next(), input.next());
+                        index = bank.getNumberOfCustomers();
+                        System.out.println("输入账户余额和利息");
+                        bank.getCustomers(index).setAccount(new SavingAccount(input.nextDouble(),input.nextDouble()));
+                    }else {
+                        System.out.println("输入账户名（姓氏和名）");
+                        bank.addcustomers(input.next(), input.next());
+                        index = bank.getNumberOfCustomers();
+                        System.out.println("输入账户余额和透支额度");
+                        bank.getCustomers(index).setAccount(new CheckingAccount(input.nextDouble(),input.nextDouble()));
+                    }
                     break;
                 case 5:
                     index = input.nextInt();

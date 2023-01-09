@@ -53,7 +53,7 @@ public class TestBanking {
                     bank.addcustomers(input.next(), input.next());
                     index = bank.getNumberOfCustomers();
                     System.out.println("输入账户余额");
-                    bank.getCustomers(index-1).setAccount(input.nextDouble());
+                    bank.getCustomers(index-1).setAccount(new Account(input.nextDouble()));
                     break;
                 case 5:
                     index = input.nextInt();

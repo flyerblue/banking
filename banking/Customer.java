@@ -17,9 +17,8 @@ public class Customer {
         return lastName;
     }
 
-    public void setAccount(double balance) {
-        Account account1 = new Account(balance);
-         this.account = account1;
+    public void setAccount(Account account) {
+        this.account = account;
     }
     public Account getAccount() {
         return account;

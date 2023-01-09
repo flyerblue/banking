@@ -8,7 +8,7 @@ public class TestBanking2 {
         System.out.println("输入客户名（姓氏和名）");
         Customer customer = new Customer(input.next(), input.next());
         System.out.println("输入账户余额");
-        customer.setAccount(new Account(input.nextDouble()));
+        customer.setAccount(input.nextDouble());
         System.out.println("客户"+customer.getFirstName()+" "+customer.getLastName()+"初始化了"+customer.getAccount().getBalance()+"余额");
         boolean bool = true;
         while (bool) {

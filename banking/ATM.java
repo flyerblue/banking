@@ -64,6 +64,7 @@ public class ATM {
                          if(exitb){
                              break;
                          }
+                         customerid = banks.get(bankid).getNumberOfCustomers();
                          banks.get(bankid).addcustomers(customer);
                          customer = banks.get(bankid).getCustomers(customerid);
                          while (exita) {
@@ -162,6 +163,7 @@ public class ATM {
                              System.out.println("-------3.存钱----------------");
                              System.out.println("-------4.添加银行卡----------------");
                              System.out.println("-------5.切换银行卡----------------");
+                             System.out.println("-------6.输出用户列表----------------");
                              System.out.println("-------7.输出交易记录----------------");
                              System.out.println("-------0.退出----------------");
                              System.out.print("请输入功能（1-4）：");
@@ -225,8 +227,6 @@ public class ATM {
                                      customerid = banks.get(bankid).getNumberOfCustomers() - 1;
                                      break;
                                  case 5:
-
-
                                      System.out.println(customer.getFirstName()+" "+customer.getLastName());
                                      for (int j = 0; j < customer.getNumberOfAccount(); j++) {
                                          if(customer.getAccount(j) instanceof CheckingAccount){
@@ -239,10 +239,14 @@ public class ATM {
                                      }
                                      accountid = input.nextInt();
                                      break;
+                                 case 6:
+                                     CustomerReport.generateReport(banks.get(bankid));
+                                     break;
                                  case 7:
                                      for (int j = 0; j < customer.getNumberOfAccount(); j++) {
                                          System.out.println("银行卡 "+j);
                                          customer.getAccount(j).gettransactions();
+                                         System.out.println();
                                      }
                                      break;
                                  default:
